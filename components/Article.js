@@ -86,6 +86,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Zach is on a WEBSITE',
+    date: 'MAY 05 2021',
+    firstParagraph: `Panda Ipsum the forest. Panda Ipsum the cool ipsum eating bamboo in the genus Ailurus and eat bamboo in the genus Ailurus and eat bamboo leaves. Red panda eat bamboo in the forest. Panda Ipsum panda eat bamboo in the reasons why the genus Ailurus and the cool tiny dancing panda. Board panda relaxing in the giant panda dancing panda. Board panda bear. Giant panda is cute panda. Board panda red panda eat bamboo in the genus Ailurus and eat bamboo in the cool tiny panda likes great panda bear giant panda bear giant black-and-white panda likes great panda loves being cool tiny panda cute tiny dancing panda. Panda Ipsum the population has dwindled. The red panda loves being cool tiny panda dances. Red panda red.
+
+    `,
+
+    secondParagraph: `Panda Ipsum the forest. Panda Ipsum the cool ipsum eating bamboo in the genus Ailurus and eat bamboo in the genus Ailurus and eat bamboo leaves. Red panda eat bamboo in the forest. Panda Ipsum panda eat bamboo in the reasons why the genus Ailurus and the cool tiny dancing panda. Board panda relaxing in the giant panda dancing panda. Board panda bear. Giant panda is cute panda. Board panda red panda eat bamboo in the genus Ailurus and eat bamboo in the cool tiny panda likes great panda bear giant panda bear giant black-and-white panda likes great panda loves being cool tiny panda cute tiny dancing panda. Panda Ipsum the population has dwindled. The red panda loves being cool tiny panda dances. Red panda red. `,
+
+    thirdParagraph: `Panda Ipsum the forest. Panda Ipsum the cool ipsum eating bamboo in the genus Ailurus and eat bamboo in the genus Ailurus and eat bamboo leaves. Red panda eat bamboo in the forest. Panda Ipsum panda eat bamboo in the reasons why the genus Ailurus and the cool tiny dancing panda. Board panda relaxing in the giant panda dancing panda. Board panda bear. Giant panda is cute panda. Board panda red panda eat bamboo in the genus Ailurus and eat bamboo in the cool tiny panda likes great panda bear giant panda bear giant black-and-white panda likes great panda loves being cool tiny panda cute tiny dancing panda. Panda Ipsum the population has dwindled. The red panda loves being cool tiny panda dances. Red panda red. `
   }
 ];
 
@@ -93,7 +104,57 @@ const data = [
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
+*/
+const articles = document.querySelector('div.articles');
 
+function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expand = document.createElement('span');
+
+  article.appendChild(artTitle);
+  article.appendChild(artDate);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expand);
+
+  artTitle.textContent = title;
+  artDate.textContent = date;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  expand.textContent = "+";
+
+
+  article.classList.add('article');
+  artDate.classList.add('date');
+  expand.classList.add('expandButton');
+
+  expand.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+  })
+
+  return article;
+}
+
+data.forEach((obj) => {
+  const newArticle = articleMaker(obj);
+  articles.appendChild(newArticle)
+});
+
+
+// panelData.forEach((panelObj) => {
+//   const panelItem = makePanel(panelObj);
+//   accordion.appendChild(panelItem);
+// });
+
+
+/*
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
