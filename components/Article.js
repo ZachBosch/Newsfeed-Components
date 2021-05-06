@@ -148,12 +148,6 @@ data.forEach((obj) => {
 });
 
 
-// panelData.forEach((panelObj) => {
-//   const panelItem = makePanel(panelObj);
-//   accordion.appendChild(panelItem);
-// });
-
-
 /*
   <div class="article">
     <h2>{title of the article}</h2>

@@ -17,11 +17,12 @@ let menuItems = [
 function menuMaker(items) {
   const menu = document.createElement('div');
   const unOrd = document.createElement('ul');
-
+  menu.appendChild(unOrd);
   menu.classList.add('menu');
 
   menuItems.forEach((obj) => {
     const liItems = document.createElement('li');
+    liItems.textContent = obj;
     unOrd.appendChild(liItems);
   });
 
@@ -32,6 +33,10 @@ function menuMaker(items) {
 
   return menu;
 }
+
+const header = document.querySelector('.header')
+header.appendChild(menuMaker(menuItems));
+
 
 /*
 
